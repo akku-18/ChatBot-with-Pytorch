@@ -1,0 +1,97 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "responses": [
+        "Hey :-)",
+        "Hello, thanks for visiting",
+        "Hi there, what can I do for you?",
+        "Hi there, how can I help?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": [
+        "See you later, thanks for visiting",
+        "Have a nice day",
+        "Bye! Come back again soon.",
+        "I am seriously going to miss you here. Best of luck for your new endeavor and the never-ending adventures.",
+        "See you soon! ",
+        "Your decision-making skills have always inspired me to be at your level. Farewell and good luck",
+        "Bidding farewell is one difficult part today!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {
+      "tag": "items",
+      "patterns": [
+        "Which items do you have?",
+        "What kinds of items are there?",
+        "What do you sell?"
+      ],
+      "responses": [
+        "We sell electronic gadgets",
+        "We have top clothing brand for men and women."
+      ]
+    },
+    {
+      "tag": "payments",
+      "patterns": [
+        "Do you take credit cards?",
+        "Do you accept Mastercard?",
+        "Can I pay with Paypal?",
+        "Are you cash only?"
+      ],
+      "responses": [
+        "We accept VISA, Mastercard and Paypal",
+        "We accept most major credit cards, and Paypal",
+        "Yes we accept credit cards and Paypal"
+      ]
+    },
+    {
+      "tag": "delivery",
+      "patterns": [
+        "How long does delivery take?",
+        "How long does shipping take?",
+        "When do I get my delivery?"
+      ],
+      "responses": [
+        "Delivery takes 2-4 days",
+        "Shipping takes 2-4 days"
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke!",
+        "Tell me something funny!",
+        "Do you know a joke?"
+      ],
+      "responses": [
+        "What did the buffalo say when his son left for college? Bison.",
+        "I failed math so many times at school, I can't even count.",
+        "Don't you hate it when someone answers their own questions? I do.",
+        "It takes a lot of balls to golf the way I do.",
+        "Never trust atoms; they make up everything.",
+        " I used to think I was indecisive. But now I'm not so sure.",
+        "Just burned 2,000 calories. That's the last time I leave brownies in the oven while I nap.",
+        "The problem isn't that obesity runs in your family. It's that no one runs in your family.",
+        "The future, the present, and the past walk into a bar. Things got a little tense.",
+        "A termite walks into the bar and asks, Is the bar tender here?"
+      ]
+    }
+  ]
+}
