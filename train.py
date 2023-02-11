@@ -6,6 +6,8 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
 
+from model import NeuralNet
+
 with open('intents.json', 'r') as f:
     intents = json.load(f)
 
@@ -25,12 +27,11 @@ ignore_words = ['?', ',', '!', '.']
 all_words = [stem(w) for w in all_words if w not in ignore_words]
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
-print(all_words)
 
 X_trains = []
 y_train = []
 
-for (patterns_sentence, tags) in xy:
+for (patterns_sentence, tag) in xy:
     bag = bag_of_words(patterns_sentence, all_words)
     X_trains.append(bag)
 
@@ -55,6 +56,40 @@ class ChatDataset(Dataset):
     
 #Hyperparameters
 batch_size = 8 
+hidden_size = 8
+output_size = len(tags)
+input_size = len(X_trains[0])
+learning_rate = 0.001
+num_epoches = 1000
+
+
+
 dataset = ChatDataset()
 train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True, num_workers=2)
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = NeuralNet(input_size, hidden_size, output_size).to(device)
+
+# Loss and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+for epoch in range(num_epoches):
+    for (words, labels) in train_loader:
+        words = words.to(device)
+        labels = labels.to(device)
+
+        # Forward
+        outputs = model(words)
+        loss = criterion(outputs, labels)
+
+        # Backward and optimizer step
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+    if (epoch + 1)%100 == 0:
+        print(f'epoch {epoch + 1}/{num_epoches}, loss = {loss.item():.4f}')
+
+print(f'Final Loss, loss = {loss.item():.4f}')
 
